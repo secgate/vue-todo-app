@@ -11,7 +11,7 @@
     <input type="text" v-model="inputText" v-on:keyup.enter="addItem">// event modifier
     <button v-on:click="fetchItems">add</button>
     <div>
-      {{ todoItems }}
+      {{ todoItems }} 
       <ul>
         <li v-for="(todoItem, index) in todoItems">
           {{ todoItem }}

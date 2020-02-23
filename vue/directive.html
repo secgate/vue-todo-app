@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app" >
+    1. Binding <br>
+    {{ bind == 'Page Title' ? "Page Title" : "No Page Title" }}
+    <div v-bind:id="'list-'+id">
+      html태그의 속성값을 설정할 떼 사용
+      ( v-bind:id="'list-'+id" )
+    </div>
+    <span v-bind:title="message">
+      내 위에 잠시 마우스를 올리면 동적으로 바인딩 된 title을 볼 수 있습니다!
+    </span><br><br> 
+
+    2. v-bind <br>
+    <a v-bind:href="url" target="_blank">전달인자, 표현식 링크</a>
+    <button v-on:click="logText">전달인자, 표현식 메서드</button>
+    <!-- <a v-bind:[attributeName]="url" target="_blank">v2.60+동적전달인자</a> -->
+    <br><br>
+
+    3. v-if <br>
+    3-1. 값비교
+    <p v-if="code=='c1'">c1</p>
+    <p v-else-if="code=='c2'">c2</p>
+    <p v-else="code">c3</p>
+
+    3-2. true/false <br>
+    <button v-if="flag" v-on:click="changeFlag">true</button>
+    <button v-else="!flag" v-on:click="changeFlag">false</button>
+    <br>
+
+    4. v-for <br>
+    <li v-for="(todo, index) in todos">
+      {{ todo, (todo, index) }}
+    </li>
+    <br>
+
+    5. v-model <br>
+    <input v-model="modelMsg">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var app = 
+    new Vue({
+      el: '#app',
+      data: {
+        bind: 'Page Title',
+        message: '이 페이지는 ' + new Date() + ' 에 로드 되었습니다',
+        id: 'ssss',
+        code: 'c4',
+        flag: false,
+        url: 'http://www.naver.com',
+        attributeName: 'href',
+        todos: ['a', 'b', 'c'],
+        modelMsg: 'hello vue!'
+      },   
+      methods: {
+        logText: function() {
+          console.log("AA");
+        },
+        changeFlag: function() {
+          this.flag = !this.flag;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
